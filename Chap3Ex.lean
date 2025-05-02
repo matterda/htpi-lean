@@ -5,26 +5,37 @@ namespace HTPI.Exercises
 -- 1.
 theorem Exercise_3_2_1a (P Q R : Prop)
     (h1 : P → Q) (h2 : Q → R) : P → R := by
+    assume h3: P
+    have h4: Q := h1 h3
+    show R from h2 h4
 
-  done
 
 -- 2.
 theorem Exercise_3_2_1b (P Q R : Prop)
     (h1 : ¬R → (P → ¬Q)) : P → (Q → R) := by
+    assume h2: P
+    contrapos
+    assume h3: ¬R
+    show ¬Q from h1 h3 h2
 
-  done
 
 -- 3.
 theorem Exercise_3_2_2a (P Q R : Prop)
     (h1 : P → Q) (h2 : R → ¬Q) : P → ¬R := by
+    assume h3: P
+    have h4: Q := h1 h3
+    contrapos at h2
+    show ¬R from h2 h4
 
-  done
 
 -- 4.
 theorem Exercise_3_2_2b (P Q : Prop)
     (h1 : P) : Q → ¬(Q → ¬P) := by
+    assume h2: Q
+    by_contra h4
+    have h3: ¬P := h4 h2
+    show False from h3 h1
 
-  done
 
 /- Section 3.3 -/
 -- 1.
