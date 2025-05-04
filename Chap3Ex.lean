@@ -42,8 +42,11 @@ theorem Exercise_3_2_2b (P Q : Prop)
 theorem Exercise_3_3_1
     (U : Type) (P Q : Pred U) (h1 : ∃ (x : U), P x → Q x) :
     (∀ (x : U), P x) → ∃ (x : U), Q x := by
-
-  done
+    assume h2: ∀ (x : U), P x
+    obtain (a: U) (h3: P a → Q a) from h1
+    apply Exists.intro a _
+    have h4: P a := h2 a
+    show Q a from h3 h4
 
 -- 2.
 theorem Exercise_3_3_8 (U : Type) (F : Set (Set U)) (A : Set U)
