@@ -38,3 +38,19 @@ example (U : Type) (P Q : Pred U)
     apply Exists.intro a _
     by_contra h7
     show False from (h5 h7) (h6 h7)
+
+
+theorem Example_3_3_5 (U : Type) (B : Set U)
+    (F : Set (Set U)) : ⋃₀ F ⊆ B → F ⊆ 𝒫 B := by
+    assume h1: ⋃₀ F ⊆ B
+    define
+    define at h1
+    fix x: Set U
+    assume h2: x ∈ F
+    define
+    fix y: U
+    assume h3: y ∈ x
+    apply h1 _
+    define
+    apply Exists.intro x _
+    show x ∈ F ∧ y ∈ x from And.intro h2 h3
